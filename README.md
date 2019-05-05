@@ -53,7 +53,7 @@ If you have already done the preparation, you can skip this part and go to the `
 
 6. Insert the `xxxxxxxxxxxxxxxx` string [here](<http://cma.henkaku.xyz/>). If the AID is valid, it will yield a key that you can now use to decrypt/re-encrypt your game.
 
-7. Decrypt the game backup as follows (if you haven't installed psvimgtools yet, then just place them in the `YYYYZZZZZ` folder):
+7. Decrypt the game backup by executing the following command in your command line/terminal (make sure you're in the right working directory. Also, if you haven't installed psvimgtools yet, then just place them in the `YYYYZZZZZ` folder):
 
    ```
    psvimg-extract -K YOUR_KEY game/game.psvimg game_dec
@@ -69,7 +69,7 @@ If you have already done the preparation, you can skip this part and go to the `
 
 8. Download [Trinity](<https://github.com/TheOfficialFloW/Trinity/releases/download/v1.0/PBOOT.PBP>) and copy the `PBOOT.PBP` file to `game_dec/ux0_pspemu_temp_game_PSP_GAME_YYYYZZZZZ/PBOOT.PBP` (the files `EBOOT.PBP`, `__sce_ebootpbp` and `VITA_PATH.txt` should exist in this folder). If `PBOOT.PBP` does already exist there, just overwrite it.
 
-9. Now re-encrypt the backup similar to above:
+9. Now re-encrypt the backup similar to above by typing this in your command line/terminal:
 
    ```
    psvimg-create -n game -K YOUR_KEY game_dec game
