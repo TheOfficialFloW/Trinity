@@ -86,7 +86,7 @@ If you have already done the preparation, you can skip this part and go to the `
    created game/game.psvmd
    ```
 
-10. Remove the `game_dec` folder and select `Refresh database` in qcma settings.
+10. Remove the `game_dec` folder (and PSVimg tools if copied here) and select `Refresh database` in qcma settings.
 
 11. Now you need to copy back the modified backup to your PS Vita: Launch Content Manager on your PS Vita and connect it to your computer (if it's already open, just go back to the first menu), where you then need to select `PC -> PS Vita System`, and after that you select `Applications`. Finally select `PSP™/Other` and click on the modified game. Perform the copy operation and exit Content Manager.
 
