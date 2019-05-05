@@ -53,7 +53,7 @@ If you have already done the preparation, you can skip this part and go to the `
 
 6. Insert the `xxxxxxxxxxxxxxxx` string [here](<http://cma.henkaku.xyz/>). If the AID is valid, it will yield a key that you can now use to decrypt/re-encrypt your game.
 
-7. Decrypt the game backup by executing the following command in your command line/terminal (make sure you're in the right working directory. Also, if you haven't installed psvimgtools yet, then just place them in the `YYYYZZZZZ` folder):
+7. Decrypt the game backup by executing the following command in your command line/terminal (make sure you're in the right working directory. On Windows you can open the terminal in the current working directory by typing in `cmd` in the path bar of the file explorer. Also, if you haven't installed psvimgtools yet, then just place them in the `YYYYZZZZZ` folder):
 
    ```
    psvimg-extract -K YOUR_KEY game/game.psvimg game_dec
