@@ -90,7 +90,7 @@ If you have already done the preparation, you can skip this part and go to the `
 
 11. Now you need to copy back the modified backup to your PS Vita: Launch Content Manager on your PS Vita and connect it to your computer (if it's already open, just go back to the first menu), where you then need to select `PC -> PS Vita System`, and after that you select `Applications`. Finally select `PSP™/Other` and click on the modified game. Perform the copy operation and exit Content Manager.
 
-12. In the livearea, the game should now have a different icon and should now be called *Trinity*. If not, please re-read the instructions more carefully and begin from fresh.
+12. In the livearea, the game should now have a different icon and should now be called *Trinity* (eventually you have to rebuild the database in recovery mode to make the bubble change its look). If not, please re-read the instructions more carefully and begin from fresh.
 
 13. Turn on Wi-Fi, then reboot your device and straightly launch *Trinity*. Do not do anything else, otherwise the exploit will be less reliable. It is very important that you do not have any running downloads in background.
 
