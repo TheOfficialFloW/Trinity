@@ -42,7 +42,7 @@ If you have already done the preparation, you can skip this part and go to the `
 
 ## Installation
 
-1. Download and install [qcma](<https://codestation.github.io/qcma/>) and [psvimgtools](<https://github.com/yifanlu/psvimgtools>) (check the releases section for the binaries).
+1. Download and install [qcma](<https://codestation.github.io/qcma/>) and [psvimgtools](<https://github.com/yifanlu/psvimgtools/releases>).
 
 2. Start qcma and within the qcma settings set the option `Use this version for updates` to `FW 0.00 (Always up-to-date)` to spoof the System Software check.
 
