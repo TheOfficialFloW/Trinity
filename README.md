@@ -17,6 +17,7 @@ Thank you!
 - Your device must be on firmware 3.69 or 3.70. If you're on a lower firmware, please use [h-encore](<https://github.com/TheOfficialFloW/h-encore>) instead.
 - If your device is a phat OLED model, you need a Memory Card in order to install. There's no need for a Memory Card on Slim/PS TV models, since they already provide an Internal Storage.
 - Your device must be able to access the PlayStation Store.
+- If your device region is mainland China (model PCH-2009) then this exploit may not available for you, since this model is region locked to only accept mainland China PSN accounts to login and can only access mainland China PS Store, which doesn't contain any PSP games at all.
 
 ## Preparation
 
