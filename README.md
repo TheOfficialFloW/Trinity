@@ -106,9 +106,10 @@ If you have already done the preparation, you can skip this part and go to the `
 ### Exploit
 
 - "I get the error `[TURN ON WI-FI TO USE THIS EXPLOIT].`" - Just hold the PS button and turn on Wi-Fi in the quickmenu.
-- "I get the error `[EXPLOIT FAILED: 0x800200CB].`" - This can sometimes happen. Just rerun the exploit
+- "I get the error `[EXPLOIT FAILED: 0x800200CB].`" - This can sometimes happen. Just rerun the exploit.
 - "My device freezes/panics." - Be sure you do not have any downloads running in background. Also make sure that you do not launch anything else before *Trinity*. A fresh reboot is always recommended.
 - "Trinity crashes in the second run." - It is not recommended that you launch *Trinity* multiple times. Always reboot your device before launching *Trinity*.
+- "Trinity bubble disappeared after downgrading." - Sony prevents you from playing games that have been downloaded from a higher firmware. Therefore, after downgrading, it is hidden. You can redownload the game on your lower firmware and reapply the *Trinity* patch to make it compatible with your current firmware and higher.
 
 ### HENkaku Settings
 
