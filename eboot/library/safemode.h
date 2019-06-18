@@ -1,0 +1,525 @@
+/* safemode.h -- SceSafeMode exports/imports
+ *
+ * Copyright (C) 2019 TheFloW
+ *
+ * This software may be modified and distributed under the terms
+ * of the MIT license.  See the LICENSE file for details.
+ */
+
+#ifndef __SAFEMODE_H__
+#define __SAFEMODE_H__
+
+// Imports
+
+// SceErrorUser
+#define SceSafeMode_sceErrorGetExternalString 0x2a2170
+#define SceSafeMode_sceErrorHistoryPostError 0x2a3c90
+
+// SceLibKernel
+#define SceSafeMode_sceIoDevctl 0x2a2fe0
+#define SceSafeMode_sceKernelWaitSema 0x2a2ff0
+#define SceSafeMode_sceKernelGetThreadId 0x2a3000
+#define SceSafeMode_sceKernelWaitEvent 0x2a3010
+#define SceSafeMode_sceKernelCallModuleExit 0x2a3020
+#define SceSafeMode_sceKernelWaitSemaCB 0x2a3ab0
+#define SceSafeMode_sceKernelUnloadModule 0x2a3630
+#define SceSafeMode_sceKernelCreateSema 0x2a3030
+#define SceSafeMode_sceKernelLockMutex 0x2a3ac0
+#define SceSafeMode_sceKernelPollEventFlag 0x2a3640
+#define SceSafeMode_sceKernelPollEvent 0x2a3040
+#define SceSafeMode_sceKernelDeleteLwMutex 0x2a3050
+#define SceSafeMode_sceIoChstat 0x2a3060
+#define SceSafeMode_sceClibStrlcpy 0x2a2330
+#define SceSafeMode_sceKernelLoadStartModule 0x2a2180
+#define SceSafeMode_sceClibMemcpy_safe 0x2a2340
+#define SceSafeMode_sceClibStrtoll 0x2a39e0
+#define SceSafeMode___stack_chk_fail 0x2a2190
+#define SceSafeMode_sceKernelSignalLwCond 0x2a3650
+#define SceSafeMode_sceKernelStopModule 0x2a3660
+#define SceSafeMode_sceClibMspaceCreate 0x2a2350
+#define SceSafeMode___sce_aeabi_idiv0 0x2a39f0
+#define SceSafeMode_sceKernelLockLwMutex 0x2a3070
+#define SceSafeMode_sceKernelCreateLwCond 0x2a3670
+#define SceSafeMode_sceKernelCreateCond 0x2a3ad0
+#define SceSafeMode_sceIoPread 0x2a3a00
+#define SceSafeMode_sceIoIoctl 0x2a3a10
+#define SceSafeMode_sceIoGetstatByFd 0x2a3080
+#define SceSafeMode_sceClibStrchr 0x2a3a20
+#define SceSafeMode_sceClibMemset 0x2a2360
+#define SceSafeMode_sceClibStrncmp 0x2a2370
+#define SceSafeMode_sceIoOpenAsync 0x2a3090
+#define SceSafeMode_sceIoOpen 0x2a21a0
+#define SceSafeMode_sceClibStrrchr 0x2a3a30
+#define SceSafeMode_sceKernelStartModule 0x2a3680
+#define SceSafeMode_sceClibStrlcat 0x2a30a0
+#define SceSafeMode_sceKernelDeleteLwCond 0x2a3690
+#define SceSafeMode_sceClibMemmove 0x2a2380
+#define SceSafeMode_sceKernelExitProcess 0x2a30b0
+#define SceSafeMode_sceKernelWaitEventFlag 0x2a30c0
+#define SceSafeMode_sceKernelCreateEventFlag 0x2a30d0
+#define SceSafeMode_sceClibMspaceMalloc 0x2a2390
+#define SceSafeMode_sceKernelGetSystemTime 0x2a3a40
+#define SceSafeMode_sceClibSnprintf 0x2a3a50
+#define SceSafeMode_sceKernelUnlockLwMutex 0x2a30e0
+#define SceSafeMode_sceIoMkdir 0x2a21b0
+#define SceSafeMode_sceIoSync 0x2a30f0
+#define SceSafeMode_sceIoLseek 0x2a21c0
+#define SceSafeMode_sceClibMspaceFree 0x2a23a0
+#define SceSafeMode_sceIoDread 0x2a21d0
+#define SceSafeMode_sceClibMemcmp 0x2a23b0
+#define SceSafeMode_SceLibKernel_9F793F84 0x2a3100
+#define SceSafeMode_sceClibStrcmp 0x2a3110
+#define SceSafeMode_sceClibStrncat 0x2a3a60
+#define SceSafeMode_sceKernelTryLockLwMutex 0x2a3120
+#define SceSafeMode_sceIoDopen 0x2a21e0
+#define SceSafeMode_sceClibStrnlen 0x2a23c0
+#define SceSafeMode_sceClibMspaceDestroy 0x2a23d0
+#define SceSafeMode_sceKernelGetProcessTimeWide 0x2a3130
+#define SceSafeMode_sceKernelLoadModule 0x2a36a0
+#define SceSafeMode_sceIoGetstat 0x2a21f0
+#define SceSafeMode_sceClibStrncpy 0x2a3a70
+#define SceSafeMode_sceKernelCreateThread 0x2a3140
+#define SceSafeMode_sceKernelWaitCond 0x2a3ae0
+#define SceSafeMode_sceIoLseekAsync 0x2a3150
+#define SceSafeMode_sceClibLookCtypeTable 0x2a3a80
+#define SceSafeMode_sceKernelCreateLwMutex 0x2a3160
+#define SceSafeMode_sceKernelWaitThreadEnd 0x2a3170
+#define SceSafeMode_sceKernelWaitLwCond 0x2a36b0
+#define SceSafeMode_sceIoRemove 0x2a2200
+#define SceSafeMode_sceKernelSignalLwCondAll 0x2a36c0
+#define SceSafeMode_sceIoRmdir 0x2a2210
+#define SceSafeMode_sceKernelGetProcessTimeLow 0x2a36d0
+#define SceSafeMode_sceKernelCreateMutex 0x2a3af0
+#define SceSafeMode_sceKernelStartThread 0x2a3180
+#define SceSafeMode_sceIoRename 0x2a3190
+#define SceSafeMode_sceKernelGetLwMutexInfo 0x2a31a0
+#define SceSafeMode_sceClibPrintf 0x2a2220
+#define SceSafeMode_sceClibVsnprintf 0x2a23e0
+#define SceSafeMode___sce_aeabi_ldiv0 0x2a3a90
+
+// SceIofilemgr
+#define SceSafeMode_sceIoSyncByFd 0x2a31b0
+#define SceSafeMode_sceIoSetPriorityForSystem 0x2a31c0
+#define SceSafeMode_sceIoWrite 0x2a2230
+#define SceSafeMode_sceIoDclose 0x2a2240
+#define SceSafeMode_sceIoReadAsync 0x2a31d0
+#define SceSafeMode_sceIoSyncByFdAsync 0x2a31e0
+#define SceSafeMode_sceIoCloseAsync 0x2a31f0
+#define SceSafeMode_sceIoSetThreadDefaultPriorityForSystem 0x2a3200
+#define SceSafeMode_sceIoClose 0x2a2250
+#define SceSafeMode_sceIoCancel 0x2a3210
+#define SceSafeMode_sceIoComplete 0x2a3220
+#define SceSafeMode_sceIoWriteAsync 0x2a3230
+#define SceSafeMode_sceIoRead 0x2a2260
+
+// SceModulemgr
+#define SceSafeMode_sceKernelGetSystemSwVersion 0x2a2270
+
+// SceProcessmgr
+#define SceSafeMode_sceKernelPowerTick 0x2a2280
+#define SceSafeMode_sceKernelPowerUnlock 0x2a2290
+#define SceSafeMode_sceKernelPowerLock 0x2a22a0
+
+// SceThreadmgr
+#define SceSafeMode_sceKernelUnlockMutex 0x2a3b00
+#define SceSafeMode_sceKernelDeleteThread 0x2a3270
+#define SceSafeMode_sceKernelExitDeleteThread 0x2a3b10
+#define SceSafeMode_sceKernelDelayThread 0x2a22b0
+#define SceSafeMode_sceKernelClearEventFlag 0x2a36e0
+#define SceSafeMode_sceKernelDeleteEventFlag 0x2a3280
+#define SceSafeMode_sceKernelDeleteCond 0x2a3b20
+#define SceSafeMode_sceKernelCreateCallback 0x2a3290
+#define SceSafeMode_sceKernelChangeThreadPriority 0x2a32a0
+#define SceSafeMode_sceKernelSignalCondAll 0x2a3b30
+#define SceSafeMode_sceKernelDeleteMutex 0x2a3b40
+#define SceSafeMode_sceKernelDeleteCallback 0x2a32b0
+#define SceSafeMode_sceKernelDeleteSema 0x2a32c0
+#define SceSafeMode_sceKernelCheckCallback 0x2a32d0
+#define SceSafeMode_sceKernelSignalSema 0x2a32e0
+#define SceSafeMode_sceKernelSetEventFlag 0x2a32f0
+#define SceSafeMode_sceKernelGetSystemTimeWide 0x2a3b50
+
+// SceVshBridge
+#define SceSafeMode_vshSysconIsDownLoaderMode 0x2a22c0
+#define SceSafeMode_vshSblUtMgrHasComTestFlag 0x2a22d0
+#define SceSafeMode__vshSblAimgrGetPscode 0x2a2420
+#define SceSafeMode_vshSblAimgrIsCEX 0x2a22e0
+#define SceSafeMode_vshSblAimgrIsDolce 0x2a22f0
+#define SceSafeMode_vshMotionNoiseFilterIsAvailable 0x2a3370
+#define SceSafeMode_vshIoUmount 0x2a2300
+#define SceSafeMode_vshSblAimgrIsTool 0x2a2310
+#define SceSafeMode__vshIoMount 0x2a2430
+#define SceSafeMode_vshIdStorageLookup 0x2a3b70
+#define SceSafeMode__vshKernelShutdownSystem 0x2a2440
+#define SceSafeMode_vshKernelCheckModelCapability 0x2a3750
+#define SceSafeMode__vshSblSsGetNvsData 0x2a2450
+#define SceSafeMode_vshCtrlGetActiveControllerPort 0x2a2320
+#define SceSafeMode__vshSblSsSetNvsData 0x2a2460
+#define SceSafeMode__vshDisplaySetViewportConf 0x2a3930
+#define SceSafeMode__vshAppMgrCloudDataGetMcId 0x2a3940
+#define SceSafeMode__vshAppMgrCloudDataSetMcId 0x2a3950
+
+// SceSysmem
+#define SceSafeMode_sceKernelOpenMemBlock 0x2a3240
+#define SceSafeMode_sceKernelGetModelForCDialog 0x2a3250
+#define SceSafeMode_sceKernelFreeMemBlock 0x2a23f0
+#define SceSafeMode_sceKernelCloseMemBlock 0x2a3260
+#define SceSafeMode_sceKernelGetMemBlockBase 0x2a2400
+#define SceSafeMode_sceKernelAllocMemBlock 0x2a2410
+
+// SceIpmi
+#define SceSafeMode_SceIpmi_4E255C31 0x2a2470
+#define SceSafeMode_SceIpmi_B282B430 0x2a2480
+
+// SceAppMgrUser
+#define SceSafeMode_sceAppMgrSetShellScreenOrientation 0x2a2490
+#define SceSafeMode_sceAppMgrGetStatusByName 0x2a24a0
+#define SceSafeMode_sceAppMgrGetRecommendedScreenOrientation 0x2a24b0
+#define SceSafeMode_sceAppMgrGetAppMgrState 0x2a24c0
+#define SceSafeMode_sceAppMgrConvertVs0UserDrivePath 0x2a24d0
+
+// SceAppMgr
+#define SceSafeMode_sceAppMgrSetSystemImposeState2 0x2a24e0
+#define SceSafeMode_sceAppMgrIsNonGameProgram 0x2a3380
+#define SceSafeMode_sceAppMgrSetRecommendedScreenOrientationActivated 0x2a24f0
+#define SceSafeMode_sceAppMgrReleaseBtrm 0x2a2500
+#define SceSafeMode_sceAppMgrAcquireBtrm 0x2a2510
+#define SceSafeMode_sceAppMgrIsGameProgram 0x2a2520
+
+// SceHid
+#define SceSafeMode_sceHidKeyboardRegisterReadHintCallback 0x2a3390
+#define SceSafeMode_sceHidKeyboardEnumerate 0x2a33a0
+#define SceSafeMode_sceHidKeyboardSetIntercept 0x2a2530
+#define SceSafeMode_sceHidKeyboardRegisterEnumHintCallback 0x2a33b0
+#define SceSafeMode_sceHidKeyboardUnregisterEnumHintCallback 0x2a33c0
+#define SceSafeMode_sceHidKeyboardPeek 0x2a33d0
+#define SceSafeMode_sceHidKeyboardUnregisterReadHintCallback 0x2a33e0
+
+// SceSvcCtrl
+#define SceSafeMode_SceSvcCtrl_683998F2 0x2a2540
+#define SceSafeMode_SceSvcCtrl_B21BE499 0x2a2550
+
+// SceRtcUser
+#define SceSafeMode_sceRtcGetCurrentClockLocalTime 0x2a2560
+#define SceSafeMode_sceRtcConvertLocalTimeToUtc 0x2a2570
+#define SceSafeMode_sceRtcConvertUtcToLocalTime 0x2a2580
+#define SceSafeMode_sceRtcGetCurrentTick 0x2a2590
+#define SceSafeMode_sceRtcParseRFC3339 0x2a25a0
+#define SceSafeMode_sceRtcGetDayOfWeek 0x2a25b0
+#define SceSafeMode_sceRtcGetDaysInMonth 0x2a25c0
+#define SceSafeMode_sceRtcTickAddMinutes 0x2a25d0
+#define SceSafeMode_sceRtcTickAddDays 0x2a25e0
+#define SceSafeMode_sceRtcTickAddMonths 0x2a25f0
+#define SceSafeMode_sceRtcTickAddHours 0x2a2600
+#define SceSafeMode_sceRtcGetCurrentClock 0x2a2610
+#define SceSafeMode_sceRtcFormatRFC3339LocalTime 0x2a2620
+#define SceSafeMode_sceRtcTickAddSeconds 0x2a2630
+#define SceSafeMode_sceRtcTickAddMicroseconds 0x2a2640
+#define SceSafeMode_sceRtcFormatRFC3339 0x2a2650
+#define SceSafeMode_sceRtcSetTick 0x2a2660
+#define SceSafeMode_sceRtcGetCurrentNetworkTick 0x2a2670
+#define SceSafeMode_sceRtcCheckValid 0x2a2680
+#define SceSafeMode_sceRtcTickAddYears 0x2a2690
+#define SceSafeMode_sceRtcIsLeapYear 0x2a26a0
+#define SceSafeMode_sceRtcGetTick 0x2a26b0
+
+// SceDisplayUser
+#define SceSafeMode_sceDisplayGetFrameBufInternal 0x2a26c0
+#define SceSafeMode_sceDisplayGetMaximumFrameBufResolution 0x2a26d0
+#define SceSafeMode_sceDisplaySetFrameBufInternal 0x2a26e0
+
+// SceDisplay
+#define SceSafeMode_sceDisplayWaitVblankStart 0x2a26f0
+
+// SceTouch
+#define SceSafeMode_sceTouchPeekRegion 0x2a2700
+#define SceSafeMode_sceTouchGetPanelInfo 0x2a2710
+#define SceSafeMode_sceTouchSetSamplingStateExt 0x2a2720
+#define SceSafeMode_sceTouchSetSamplingState 0x2a2730
+#define SceSafeMode_sceTouchPeekRegionExt 0x2a2740
+#define SceSafeMode_sceTouchClearRegion 0x2a2750
+#define SceSafeMode_sceTouchDisableTouchForce 0x2a2760
+#define SceSafeMode_sceTouchSetRegion 0x2a2770
+#define SceSafeMode_sceTouchEnableTouchForce 0x2a2780
+#define SceSafeMode_sceTouchActivateRegion 0x2a2790
+#define SceSafeMode_sceTouchGetPixelDensity 0x2a27a0
+
+// SceMotion
+#define SceSafeMode_SceMotion_0D9FA7EA 0x2a27b0
+#define SceSafeMode_sceMotionStartSampling 0x2a27c0
+#define SceSafeMode_sceMotionGetSensorState 0x2a27d0
+#define SceSafeMode_sceMotionSetDeadband 0x2a27e0
+#define SceSafeMode_SceMotion_A408BC69 0x2a27f0
+#define SceSafeMode_sceMotionSetTiltCorrection 0x2a2800
+#define SceSafeMode_sceMotionStopSampling 0x2a2810
+#define SceSafeMode_sceMotionGetState 0x2a2820
+#define SceSafeMode_SceMotion_D23686B0 0x2a2830
+#define SceSafeMode_SceMotion_D88B731D 0x2a2840
+
+// SceBt
+#define SceSafeMode_sceBtReadEvent 0x2a2850
+#define SceSafeMode_sceBtUnregisterCallback 0x2a2860
+#define SceSafeMode_sceBtRegisterCallback 0x2a2870
+
+// SceCtrl
+#define SceSafeMode_sceCtrlRegisterBdRMCCallback 0x2a35a0
+#define SceSafeMode_sceCtrlUnregisterBdRMCCallback 0x2a35b0
+#define SceSafeMode_sceCtrlPeekBufferPositive2 0x2a2880
+#define SceSafeMode_sceCtrlGetControllerPortInfo 0x2a2890
+#define SceSafeMode_sceCtrlSetButtonIntercept 0x2a28a0
+#define SceSafeMode_sceCtrlGetButtonIntercept 0x2a28b0
+#define SceSafeMode_sceCtrlPeekBufferPositiveExt2 0x2a28c0
+#define SceSafeMode_sceCtrlSetSamplingMode 0x2a28d0
+#define SceSafeMode_sceCtrlSetSamplingModeExt 0x2a28e0
+
+// SceSharedFb
+#define SceSafeMode_sceSharedFbClose 0x2a28f0
+#define SceSafeMode_sceSharedFbUpdateProcess 0x2a2900
+#define SceSafeMode_sceSharedFbUpdateProcessEnd 0x2a2910
+#define SceSafeMode_sceSharedFbBegin 0x2a2920
+#define SceSafeMode_sceSharedFbGetInfo 0x2a2930
+#define SceSafeMode_sceSharedFbGetShellRenderPort 0x2a2940
+#define SceSafeMode__sceSharedFbOpen 0x2a2950
+#define SceSafeMode_sceSharedFbDelete 0x2a2960
+#define SceSafeMode_sceSharedFbCreate 0x2a2970
+#define SceSafeMode_sceSharedFbUpdateProcessBegin 0x2a2980
+#define SceSafeMode_sceSharedFbEnd 0x2a2990
+
+// SceGxm
+#define SceSafeMode_sceGxmMapFragmentUsseMemory 0x2a29a0
+#define SceSafeMode_sceGxmShaderPatcherCreate 0x2a29b0
+#define SceSafeMode_sceGxmSetFrontPointLineWidth 0x2a29c0
+#define SceSafeMode_sceGxmFinish 0x2a29d0
+#define SceSafeMode_sceGxmUnmapVertexUsseMemory 0x2a29e0
+#define SceSafeMode_sceGxmDestroyRenderTarget 0x2a29f0
+#define SceSafeMode_sceGxmDepthStencilSurfaceSetForceLoadMode 0x2a2a00
+#define SceSafeMode_sceGxmSetTwoSidedEnable 0x2a2a10
+#define SceSafeMode_sceGxmTextureInitCube 0x2a35c0
+#define SceSafeMode_sceGxmTextureGetWidth 0x2a35d0
+#define SceSafeMode_sceGxmTextureSetVAddrMode 0x2a2a20
+#define SceSafeMode_sceGxmDepthStencilSurfaceSetForceStoreMode 0x2a2a30
+#define SceSafeMode_sceGxmSetFrontDepthFunc 0x2a2a40
+#define SceSafeMode_sceGxmDrawInstanced 0x2a2a50
+#define SceSafeMode_sceGxmProgramParameterGetCategory 0x2a2a60
+#define SceSafeMode_sceGxmSetBackStencilFunc 0x2a2a70
+#define SceSafeMode_sceGxmSetWClampEnable 0x2a2a80
+#define SceSafeMode_sceGxmTextureSetMipFilter 0x2a2a90
+#define SceSafeMode_sceGxmProgramFindParameterByName 0x2a2aa0
+#define SceSafeMode_sceGxmSetFragmentTexture 0x2a2ab0
+#define SceSafeMode_sceGxmShaderPatcherRegisterProgram 0x2a2ac0
+#define SceSafeMode_sceGxmMidSceneFlush 0x2a2ad0
+#define SceSafeMode_sceGxmSetVertexProgram 0x2a2ae0
+#define SceSafeMode_sceGxmSetViewport 0x2a2af0
+#define SceSafeMode_sceGxmTextureSetMinFilter 0x2a2b00
+#define SceSafeMode_sceGxmTextureSetUAddrMode 0x2a2b10
+#define SceSafeMode_sceGxmTextureInitLinear 0x2a2b20
+#define SceSafeMode_sceGxmRenderTargetGetDriverMemBlock 0x2a2b30
+#define SceSafeMode_sceGxmShaderPatcherCreateFragmentProgram 0x2a2b40
+#define SceSafeMode_sceGxmTextureGetHeight 0x2a35e0
+#define SceSafeMode_sceGxmProgramParameterGetResourceIndex 0x2a2b50
+#define SceSafeMode_sceGxmTextureInitSwizzledArbitrary 0x2a35f0
+#define SceSafeMode_sceGxmProgramFindParameterBySemantic 0x2a2b60
+#define SceSafeMode_sceGxmSetUniformDataF 0x2a2b70
+#define SceSafeMode_sceGxmTextureInitLinearStrided 0x2a2b80
+#define SceSafeMode_sceGxmSyncObjectCreate 0x2a2b90
+#define SceSafeMode_sceGxmSetRegionClip 0x2a2ba0
+#define SceSafeMode_sceGxmReserveFragmentDefaultUniformBuffer 0x2a2bb0
+#define SceSafeMode_sceGxmUnmapFragmentUsseMemory 0x2a2bc0
+#define SceSafeMode_sceGxmSetViewportEnable 0x2a2bd0
+#define SceSafeMode_sceGxmUnmapMemory 0x2a2be0
+#define SceSafeMode_sceGxmColorSurfaceSetClip 0x2a2bf0
+#define SceSafeMode_sceGxmBeginScene 0x2a2c00
+#define SceSafeMode_sceGxmSyncObjectDestroy 0x2a2c10
+#define SceSafeMode_sceGxmSetVertexStream 0x2a2c20
+#define SceSafeMode_sceGxmGetNotificationRegion 0x2a2c30
+#define SceSafeMode_sceGxmSetBackPointLineWidth 0x2a2c40
+#define SceSafeMode_sceGxmReserveVertexDefaultUniformBuffer 0x2a2c50
+#define SceSafeMode_sceGxmSetVertexTexture 0x2a2c60
+#define SceSafeMode_sceGxmDepthStencilSurfaceInitDisabled 0x2a2c70
+#define SceSafeMode_sceGxmProgramIsNativeColorUsed 0x2a2c80
+#define SceSafeMode_sceGxmShaderPatcherGetProgramFromId 0x2a2c90
+#define SceSafeMode_sceGxmShaderPatcherReleaseVertexProgram 0x2a2ca0
+#define SceSafeMode_sceGxmSetFragmentProgram 0x2a2cb0
+#define SceSafeMode_sceGxmSetYuvProfile 0x2a2cc0
+#define SceSafeMode_sceGxmTerminate 0x2a2cd0
+#define SceSafeMode_sceGxmTextureSetLodBias 0x2a2ce0
+#define SceSafeMode_sceGxmShaderPatcherCreateVertexProgram 0x2a2cf0
+#define SceSafeMode_sceGxmSetFrontStencilFunc 0x2a2d00
+#define SceSafeMode_sceGxmDisplayQueueFinish 0x2a2d10
+#define SceSafeMode_sceGxmDraw 0x2a2d20
+#define SceSafeMode_sceGxmVertexProgramGetProgram 0x2a2d30
+#define SceSafeMode_sceGxmShaderPatcherReleaseFragmentProgram 0x2a2d40
+#define SceSafeMode_sceGxmSetBackDepthWriteEnable 0x2a2d50
+#define SceSafeMode_sceGxmMapMemory 0x2a2d60
+#define SceSafeMode_sceGxmDepthStencilSurfaceInit 0x2a2d70
+#define SceSafeMode_sceGxmSetWClampValue 0x2a2d80
+#define SceSafeMode_sceGxmTextureInitSwizzled 0x2a2d90
+#define SceSafeMode_sceGxmTextureSetPalette 0x2a2da0
+#define SceSafeMode_sceGxmSetCullMode 0x2a2db0
+#define SceSafeMode_sceGxmTextureInitCubeArbitrary 0x2a3600
+#define SceSafeMode_sceGxmTextureInitTiled 0x2a2dc0
+#define SceSafeMode_sceGxmCreateContext 0x2a2dd0
+#define SceSafeMode_sceGxmTextureGetFormat 0x2a2de0
+#define SceSafeMode_sceGxmShaderPatcherDestroy 0x2a2df0
+#define SceSafeMode_sceGxmDisplayQueueAddEntry 0x2a2e00
+#define SceSafeMode_sceGxmColorSurfaceInit 0x2a2e10
+#define SceSafeMode_sceGxmDestroyContext 0x2a2e20
+#define SceSafeMode_sceGxmSetWBufferEnable 0x2a2e30
+#define SceSafeMode_sceGxmShaderPatcherUnregisterProgram 0x2a2e40
+#define SceSafeMode_sceGxmSetFrontDepthWriteEnable 0x2a2e50
+#define SceSafeMode_sceGxmTextureGetType 0x2a3610
+#define SceSafeMode_sceGxmSetBackPolygonMode 0x2a2e60
+#define SceSafeMode_sceGxmTextureGetMipmapCount 0x2a3620
+#define SceSafeMode_sceGxmMapVertexUsseMemory 0x2a2e70
+#define SceSafeMode_sceGxmTextureSetMagFilter 0x2a2e80
+#define SceSafeMode_sceGxmSetFrontPolygonMode 0x2a2e90
+#define SceSafeMode_sceGxmEndScene 0x2a2ea0
+
+// SceGxmInternal
+#define SceSafeMode_SceGxmInternal_4DD98588 0x2a2eb0
+#define SceSafeMode_SceGxmInternal_5694B569 0x2a2ec0
+#define SceSafeMode_SceGxmInternal_B9391D22 0x2a2ed0
+#define SceSafeMode_SceGxmInternal_C29B9B82 0x2a2ee0
+#define SceSafeMode_SceGxmInternal_C8A0F04E 0x2a2ef0
+#define SceSafeMode_SceGxmInternal_D7506735 0x2a2f00
+#define SceSafeMode_SceGxmInternal_EC82DB20 0x2a2f10
+
+// SceGxmInternalForVsh
+#define SceSafeMode_SceGxmInternalForVsh_2A956594 0x2a2f20
+#define SceSafeMode_SceGxmInternalForVsh_9B8FC52F 0x2a2f30
+#define SceSafeMode_SceGxmInternalForVsh_A04F5FAC 0x2a2f40
+#define SceSafeMode_SceGxmInternalForVsh_AD3FE572 0x2a2f50
+#define SceSafeMode_SceGxmInternalForVsh_BEB4F93D 0x2a2f60
+
+// SceAudio
+#define SceSafeMode_sceAudioOutOutput 0x2a2f70
+#define SceSafeMode_sceAudioOutOpenPort 0x2a2f80
+#define SceSafeMode_sceAudioOutOpenExtPort 0x2a2f90
+#define SceSafeMode_sceAudioOutSetVolume 0x2a2fa0
+#define SceSafeMode_sceAudioOutReleasePort 0x2a2fb0
+
+// SceRegMgrForSDK
+#define SceSafeMode_sceRegMgrUtilityGetInt 0x2a2fc0
+
+// SceRegMgrForGame
+#define SceSafeMode_sceRegMgrSystemParamGetInt 0x2a2fd0
+
+// SceRegMgrService
+#define SceSafeMode_sceRegMgrSrvCnvRegionStr 0x2a3300
+#define SceSafeMode_sceRegMgrSrvGetRegion 0x2a3310
+
+// ScePower
+#define SceSafeMode_scePowerRegisterCallback 0x2a3320
+#define SceSafeMode_scePowerIsBatteryExist 0x2a3b60
+#define SceSafeMode_scePowerGetGpuClockFrequency 0x2a36f0
+#define SceSafeMode_scePowerGetBatteryLifePercent 0x2a3330
+#define SceSafeMode_scePowerGetBusClockFrequency 0x2a3700
+#define SceSafeMode_scePowerGetBatteryVolt 0x2a3920
+#define SceSafeMode_scePowerSetGpuClockFrequency 0x2a3710
+#define SceSafeMode_scePowerSetArmClockFrequency 0x2a3720
+#define SceSafeMode_scePowerIsPowerOnline 0x2a3340
+#define SceSafeMode_scePowerGetBatteryRemainCapacity 0x2a3350
+#define SceSafeMode_scePowerGetArmClockFrequency 0x2a3730
+#define SceSafeMode_scePowerSetBusClockFrequency 0x2a3740
+#define SceSafeMode_scePowerUnregisterCallback 0x2a3360
+
+// SceShellUtil
+#define SceSafeMode_SceShellUtil_1B186905 0x2a33f0
+#define SceSafeMode_SceShellUtil_C4810C56 0x2a3400
+#define SceSafeMode_SceShellUtil_D0DDEDBC 0x2a3410
+
+// SceHttp
+#define SceSafeMode_sceHttpGetAllResponseHeaders 0x2a3420
+#define SceSafeMode_sceHttpCreateRequestWithURL2 0x2a3430
+#define SceSafeMode_sceHttpsEnableOption2 0x2a3440
+#define SceSafeMode_sceHttpSetConnectTimeOut 0x2a3450
+#define SceSafeMode_sceHttpsGetSslError 0x2a3460
+#define SceSafeMode_sceHttpsDisableOption2 0x2a3470
+#define SceSafeMode_sceHttpDeleteRequest 0x2a3480
+#define SceSafeMode_SceHttp_43A7CC70 0x2a3490
+#define SceSafeMode_sceHttpCreateTemplate 0x2a34a0
+#define SceSafeMode_sceHttpSetAcceptEncodingGZIPEnabled 0x2a34b0
+#define SceSafeMode_sceHttpAddRequestHeader 0x2a34c0
+#define SceSafeMode_sceHttpReadData 0x2a34d0
+#define SceSafeMode_sceHttpSetResolveTimeOut 0x2a34e0
+#define SceSafeMode_sceHttpSetSendTimeOut 0x2a34f0
+#define SceSafeMode_sceHttpSetRecvTimeOut 0x2a3500
+#define SceSafeMode_sceHttpGetLastErrno 0x2a3510
+#define SceSafeMode_sceHttpSendRequest 0x2a3520
+#define SceSafeMode_sceHttpCreateConnection 0x2a3530
+#define SceSafeMode_sceHttpAbortRequest 0x2a3540
+#define SceSafeMode_sceHttpDeleteTemplate 0x2a3550
+#define SceSafeMode_sceHttpDeleteConnection 0x2a3560
+#define SceSafeMode_SceHttp_F30073EC 0x2a3570
+#define SceSafeMode_sceHttpGetResponseContentLength 0x2a3580
+#define SceSafeMode_sceHttpSetResponseHeaderMaxSize 0x2a3590
+
+// SceSblSsUpdateMgr
+#define SceSafeMode_SceSblSsUpdateMgr_157AD4AD 0x2a3760
+#define SceSafeMode_sceSblUsPowerControl 0x2a3770
+#define SceSafeMode_sceSblUsInspectSpackage 0x2a3780
+#define SceSafeMode_SceSblSsUpdateMgr_2A02DCFB 0x2a3790
+#define SceSafeMode_sceSblUsGetApplicableVersion 0x2a37a0
+#define SceSafeMode_SceSblSsUpdateMgr_4897AD56 0x2a37b0
+#define SceSafeMode_sceSblUsAllocateBuffer 0x2a37c0
+#define SceSafeMode_sceSblUsUpdateSpackage 0x2a37d0
+#define SceSafeMode_sceSblUsVerifyPup 0x2a37e0
+#define SceSafeMode_sceSblUsGetSpkgInfo 0x2a37f0
+#define SceSafeMode_sceSblUsGetUpdateMode 0x2a3800
+#define SceSafeMode_SceSblSsUpdateMgr_92A8002B 0x2a3810
+#define SceSafeMode_sceSblUsVerifyPupSegmentById 0x2a3820
+#define SceSafeMode_sceSblUsVerifyPupHeader 0x2a3830
+#define SceSafeMode_SceSblSsUpdateMgr_9FC8E905 0x2a3840
+#define SceSafeMode_sceSblUsVerifyPupAdditionalSign 0x2a3850
+#define SceSafeMode_sceSblUsReleaseBuffer 0x2a3860
+#define SceSafeMode_sceSblUsCheckSystemIntegrity 0x2a3870
+#define SceSafeMode_sceSblUsExtractSpackage 0x2a3880
+#define SceSafeMode_sceSblSsUpdateMgrVerifyPupWatermark 0x2a3890
+#define SceSafeMode_sceSblUsSetUpdateMode 0x2a38a0
+#define SceSafeMode_SceSblSsUpdateMgr_D0CB50AC 0x2a38b0
+#define SceSafeMode_sceSblUsVerifyPupSegment 0x2a38c0
+#define SceSafeMode_sceSblUsGetStatus 0x2a38d0
+#define SceSafeMode_SceSblSsUpdateMgr_FE930747 0x2a38e0
+
+// SceSblQafMgr
+#define SceSafeMode_sceSblQafMgrIsAllowNonQAPup 0x2a38f0
+
+// SceRegMgr
+#define SceSafeMode_sceRegMgrGetKeyInt 0x2a3900
+#define SceSafeMode_sceRegMgrGetKeyStr 0x2a3910
+
+// SceNpDrm
+#define SceSafeMode__sceNpDrmPresetRifProvisionalFlag 0x2a3960
+#define SceSafeMode__sceNpDrmCheckDrmReset 0x2a3970
+#define SceSafeMode__sceNpDrmRemoveActData 0x2a3980
+#define SceSafeMode__sceNpDrmGetRifName 0x2a3990
+#define SceSafeMode__sceNpDrmGetRifNameForInstall 0x2a39a0
+#define SceSafeMode__sceNpDrmGetRifInfo 0x2a39b0
+#define SceSafeMode__sceNpDrmGetFixedRifName 0x2a39c0
+#define SceSafeMode__sceNpDrmCheckActData 0x2a39d0
+
+// SceThreadmgrCoredumpTime
+#define SceSafeMode_sceKernelExitThread 0x2a3aa0
+
+// SceMtpIf
+#define SceSafeMode_sceMtpIfStartPort 0x2a3b80
+#define SceSafeMode_sceMtpIfWaitConnect 0x2a3b90
+#define SceSafeMode_sceMtpIfReset 0x2a3ba0
+#define SceSafeMode_sceMtpIfGetPort 0x2a3bb0
+#define SceSafeMode_sceMtpIfRecvCommand 0x2a3bc0
+#define SceSafeMode_sceMtpIfChangePhase 0x2a3bd0
+#define SceSafeMode_sceMtpIfRecvDataWithParam 0x2a3be0
+#define SceSafeMode_sceMtpIfCancelTransfer 0x2a3bf0
+#define SceSafeMode_sceMtpIfSendDataWithParam 0x2a3c00
+#define SceSafeMode_sceMtpIfIsConnected 0x2a3c10
+#define SceSafeMode_sceMtpIfStopPort 0x2a3c20
+#define SceSafeMode_sceMtpIfSendResponse 0x2a3c30
+#define SceSafeMode_sceMtpIfSendEvent 0x2a3c40
+
+// SceUdcd
+#define SceSafeMode_sceUdcdWaitState 0x2a3c50
+#define SceSafeMode_sceUdcdRegisterCallback 0x2a3c60
+#define SceSafeMode_sceUdcdUnregisterCallback 0x2a3c70
+#define SceSafeMode_sceUdcdGetDeviceState 0x2a3c80
+
+#endif

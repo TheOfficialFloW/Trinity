@@ -1,0 +1,19 @@
+#ifndef __KROP_H__
+#define __KROP_H__
+
+typedef enum SceKernelMemBlockType {
+  SCE_KERNEL_MEMBLOCK_TYPE_SHARED_RX                = 0x0390D050,
+  SCE_KERNEL_MEMBLOCK_TYPE_USER_CDRAM_RW            = 0x09408060,
+  SCE_KERNEL_MEMBLOCK_TYPE_USER_RW_UNCACHE          = 0x0C208060,
+  SCE_KERNEL_MEMBLOCK_TYPE_USER_RX                  = 0x0C20D050,
+  SCE_KERNEL_MEMBLOCK_TYPE_USER_RW                  = 0x0C20D060,
+  SCE_KERNEL_MEMBLOCK_TYPE_USER_MAIN_PHYCONT_RW     = 0x0C80D060,
+  SCE_KERNEL_MEMBLOCK_TYPE_USER_MAIN_PHYCONT_NC_RW  = 0x0D808060,
+  SCE_KERNEL_MEMBLOCK_TYPE_KERNEL_RX                = 0x1020D005,
+  SCE_KERNEL_MEMBLOCK_TYPE_KERNEL_RW                = 0x1020D006,
+  SCE_KERNEL_MEMBLOCK_TYPE_RW_UNK0                  = 0x6020D006
+} SceKernelMemBlockType;
+
+int build_krop(void *buf, int size, u32 sysmem_base, u32 kstack_base);
+
+#endif

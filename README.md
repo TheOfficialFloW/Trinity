@@ -2,15 +2,9 @@
 
 *Trinity* is the third public jailbreak for the *PS Vita™*, which supports the latest firmwares 3.69 and 3.70. The exploit chain consists of three stages: the MIPS Kernel Exploit, the PSP Emulator Escape and the ARM Kernel Exploit.
 
-## Donation
+## Write-up
 
-If you like my work and want to support future projects, you can make a donation:
-
-- via bitcoin `361jRJtjppd2iyaAhBGjf9GUCWnunxtZ49`
-- via [paypal](https://www.paypal.me/flowsupport/20)
-- via [patreon](https://www.patreon.com/TheOfficialFloW)
-
-Thank you!
+A technical explanation of the *Trinity* exploit chain is available [here](<https://theofficialflow.github.io/2019/06/18/trinity.html>).
 
 ## Requirements
 
@@ -119,6 +113,16 @@ If you have already done the preparation, you can skip this part and go to the `
 ### enso/permanent hack
 
 - "Can I install enso on 3.69 or 3.70?" - Not on these firmwares, but you can downgrade to firmware 3.60/3.65 using [modoru](https://github.com/TheOfficialFloW/modoru) and then install enso.
+
+## Donation
+
+If you like my work and want to support future projects, you can make a donation:
+
+- via bitcoin `361jRJtjppd2iyaAhBGjf9GUCWnunxtZ49`
+- via [paypal](https://www.paypal.me/flowsupport/20)
+- via [patreon](https://www.patreon.com/TheOfficialFloW)
+
+Thank you!
 
 ## Credits
 

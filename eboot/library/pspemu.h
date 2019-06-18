@@ -1,0 +1,553 @@
+/* pspemu.h -- ScePspemu exports/imports
+ *
+ * Copyright (C) 2019 TheFloW
+ *
+ * This software may be modified and distributed under the terms
+ * of the MIT license.  See the LICENSE file for details.
+ */
+
+#ifndef __PSPEMU_H__
+#define __PSPEMU_H__
+
+// Imports
+
+// SceCtrl
+#define ScePspemu_sceCtrlPeekBufferPositive2 0x662c
+#define ScePspemu_sceCtrlPeekBufferNegative2 0x663c
+#define ScePspemu_sceCtrlSetSamplingMode 0x664c
+#define ScePspemu_sceCtrlPeekBufferPositive 0x665c
+#define ScePspemu_sceCtrlGetWirelessControllerInfo 0x666c
+#define ScePspemu_sceCtrlSetActuator 0x667c
+
+// SceAudio
+#define ScePspemu_sceAudioOutOutput 0x668c
+#define ScePspemu_sceAudioOutOpenPort 0x669c
+#define ScePspemu_sceAudioOutSetVolume 0x66ac
+#define ScePspemu_sceAudioOutSetConfig 0x66bc
+
+// SceAudiodecUser
+#define ScePspemu_sceAudiodecInitLibrary 0x66cc
+#define ScePspemu_sceAudiodecCreateDecoder 0x66dc
+#define ScePspemu_sceAudiodecGetInternalError 0x66ec
+#define ScePspemu_sceAudiodecDecode 0x66fc
+#define ScePspemu_sceAudiodecDeleteDecoder 0x670c
+
+// SceRtcUser
+#define ScePspemu_sceRtcGetCurrentClockLocalTime 0x671c
+#define ScePspemu_sceRtcConvertLocalTimeToUtc 0x672c
+#define ScePspemu_sceRtcConvertUtcToLocalTime 0x673c
+#define ScePspemu_sceRtcGetCurrentTick 0x674c
+#define ScePspemu_sceRtcGetDayOfWeek 0x675c
+#define ScePspemu_sceRtcSetTick 0x676c
+#define ScePspemu_sceRtcGetTick 0x677c
+
+// SceRtc
+#define ScePspemu_sceRtcGetAccumulativeTime 0x678c
+
+// SceAudioIn
+#define ScePspemu_sceAudioInOpenPort 0x679c
+#define ScePspemu_sceAudioInReleasePort 0x67ac
+#define ScePspemu_sceAudioInInput 0x67bc
+
+// SceCamera
+#define ScePspemu_sceCameraSetContrast 0x67cc
+#define ScePspemu_sceCameraSetReverse 0x67dc
+#define ScePspemu_sceCameraStop 0x67ec
+#define ScePspemu_sceCameraSetISO 0x67fc
+#define ScePspemu_sceCameraSetWhiteBalance 0x680c
+#define ScePspemu_sceCameraSetEV 0x681c
+#define ScePspemu_sceCameraRead 0x682c
+#define ScePspemu_sceCameraSetBrightness 0x683c
+#define ScePspemu_SceCamera_99B5FB62 0x684c
+#define ScePspemu_sceCameraOpen 0x685c
+#define ScePspemu_sceCameraStart 0x686c
+#define ScePspemu_sceCameraClose 0x687c
+#define ScePspemu_sceCameraSetSharpness 0x688c
+#define ScePspemu_sceCameraSetAntiFlicker 0x689c
+#define ScePspemu_sceCameraSetEffect 0x68ac
+#define ScePspemu_sceCameraSetZoom 0x68bc
+#define ScePspemu_sceCameraSetSaturation 0x68cc
+
+// SceGxm
+#define ScePspemu_sceGxmMapFragmentUsseMemory 0x68dc
+#define ScePspemu_sceGxmShaderPatcherCreate 0x68ec
+#define ScePspemu_sceGxmFinish 0x68fc
+#define ScePspemu_sceGxmProgramParameterGetCategory 0x690c
+#define ScePspemu_sceGxmCreateRenderTarget 0x691c
+#define ScePspemu_sceGxmProgramFindParameterByName 0x692c
+#define ScePspemu_sceGxmSetFragmentTexture 0x693c
+#define ScePspemu_sceGxmShaderPatcherRegisterProgram 0x694c
+#define ScePspemu_sceGxmSetVertexProgram 0x695c
+#define ScePspemu_sceGxmPadHeartbeat 0x696c
+#define ScePspemu_sceGxmTextureInitLinear 0x697c
+#define ScePspemu_sceGxmShaderPatcherCreateFragmentProgram 0x698c
+#define ScePspemu_sceGxmProgramParameterGetResourceIndex 0x699c
+#define ScePspemu_sceGxmSetUniformDataF 0x69ac
+#define ScePspemu_sceGxmSyncObjectCreate 0x69bc
+#define ScePspemu_sceGxmBeginScene 0x69cc
+#define ScePspemu_sceGxmSetVertexStream 0x69dc
+#define ScePspemu_sceGxmReserveVertexDefaultUniformBuffer 0x69ec
+#define ScePspemu_sceGxmSetFragmentProgram 0x69fc
+#define ScePspemu_sceGxmInitialize 0x6a0c
+#define ScePspemu_sceGxmShaderPatcherCreateVertexProgram 0x6a1c
+#define ScePspemu_sceGxmDisplayQueueFinish 0x6a2c
+#define ScePspemu_sceGxmDraw 0x6a3c
+#define ScePspemu_sceGxmMapMemory 0x6a4c
+#define ScePspemu_sceGxmDepthStencilSurfaceInit 0x6a5c
+#define ScePspemu_sceGxmTextureSetPalette 0x6a6c
+#define ScePspemu_sceGxmCreateContext 0x6a7c
+#define ScePspemu_sceGxmDisplayQueueAddEntry 0x6a8c
+#define ScePspemu_sceGxmColorSurfaceInit 0x6a9c
+#define ScePspemu_sceGxmMapVertexUsseMemory 0x6aac
+#define ScePspemu_sceGxmEndScene 0x6abc
+
+// SceDisplayUser
+#define ScePspemu_sceDisplaySetFrameBuf 0x6acc
+#define ScePspemu_sceDisplaySetFrameBufForCompat 0x6adc
+
+// SceDisplay
+#define ScePspemu_sceDisplayWaitVblankStart 0x6aec
+#define ScePspemu_sceDisplayWaitVblankStartCB 0x6afc
+
+// SceDmacmgr
+#define ScePspemu_sceDmacMemcpy 0x6b0c
+#define ScePspemu_sceDmacMemset 0x6b1c
+
+// SceTouch
+#define ScePspemu_sceTouchGetPanelInfo 0x6b2c
+#define ScePspemu_sceTouchSetSamplingState 0x6b3c
+#define ScePspemu_sceTouchPeek2 0x6b4c
+#define ScePspemu_sceTouchPeek 0x6b5c
+
+// ScePower
+#define ScePspemu_scePowerIsBatteryExist 0x6b6c
+#define ScePspemu_scePowerIsBatteryCharging 0x6b7c
+#define ScePspemu_scePowerSetGpuClockFrequency 0x6b8c
+#define ScePspemu_scePowerSetArmClockFrequency 0x6b9c
+#define ScePspemu_scePowerIsPowerOnline 0x6bac
+#define ScePspemu_scePowerRequestSuspend 0x6bbc
+#define ScePspemu_scePowerIsLowBattery 0x6bcc
+
+// SceVideodecUser
+#define ScePspemu_sceAvcdecDecodeAuInternal 0x6bdc
+#define ScePspemu_sceAvcdecUnregisterCallbackInternal 0x6bec
+#define ScePspemu_sceAvcdecDecodeFlush 0x6bfc
+#define ScePspemu_sceVideodecTermLibrary 0x6c0c
+#define ScePspemu_sceVideodecSetConfigInternal 0x6c1c
+#define ScePspemu_sceAvcdecDecodeGetPictureInternal 0x6c2c
+#define ScePspemu_sceAvcdecDeleteDecoder 0x6c3c
+#define ScePspemu_sceAvcdecGetSeiPictureTimingInternal 0x6c4c
+#define ScePspemu_sceAvcdecRegisterCallbackInternal 0x6c5c
+#define ScePspemu_sceAvcdecDecodeStop 0x6c6c
+#define ScePspemu_sceAvcdecQueryDecoderMemSize 0x6c7c
+#define ScePspemu_sceAvcdecCscInternal 0x6c8c
+#define ScePspemu_sceAvcdecDecode 0x6c9c
+#define ScePspemu_sceAvcdecCreateDecoder 0x6cac
+#define ScePspemu_sceVideodecInitLibrary 0x6cbc
+#define ScePspemu_sceAvcdecSetDecodeModeInternal 0x6ccc
+
+// SceSysmodule
+#define ScePspemu_sceSysmoduleLoadModuleInternal 0x6cdc
+#define ScePspemu_sceSysmoduleLoadModule 0x6cec
+
+// SceAudiocodec
+#define ScePspemu_sceAudiocodecInit 0x6cfc
+#define ScePspemu_sceAudiocodecQueryMemSize 0x6d0c
+#define ScePspemu_SceAudiocodec_E827E04F 0x6d1c
+
+// SceG729
+#define ScePspemu_SceG729_57DB3ADD 0x6d2c
+#define ScePspemu_SceG729_7A74B98F 0x6d3c
+#define ScePspemu_SceG729_918BE529 0x6d4c
+#define ScePspemu_SceG729_AB9DA641 0x6d5c
+#define ScePspemu_SceG729_FB053ABE 0x6d6c
+#define ScePspemu_SceG729_FF57E664 0x6d7c
+
+// SceJpegArm
+#define ScePspemu_sceJpegArmDecodeMJpegYCbCr 0x6d8c
+
+// SceJpegUser
+#define ScePspemu_sceJpegFinishMJpeg 0x6d9c
+#define ScePspemu_sceJpegInitMJpeg 0x6dac
+
+// SceJpegEncArm
+#define ScePspemu_sceJpegEncoderArmEncode 0x6dbc
+#define ScePspemu_sceJpegEncoderArmSetHeaderMode 0x6dcc
+#define ScePspemu_sceJpegEncoderArmEnd 0x6ddc
+#define ScePspemu_sceJpegEncoderArmInit 0x6dec
+#define ScePspemu_SceJpegEncArm_8D15B36D 0x6dfc
+#define ScePspemu_SceJpegEncArm_D561E2E5 0x6e0c
+#define ScePspemu_sceJpegEncoderArmSetOutputAddr 0x6e1c
+
+// SceAppMgrUser
+#define ScePspemu_sceAppMgrReceiveEventNum 0x6e2c
+#define ScePspemu__sceAppMgrGetAppState 0x6e3c
+#define ScePspemu_sceAppMgrGetAppParam 0x6e4c
+#define ScePspemu_sceAppMgrWorkDirMount 0x6e5c
+#define ScePspemu_sceAppMgrReceiveEvent 0x6e6c
+#define ScePspemu_sceAppMgrAcquireSoundOutExclusive3 0x6e7c
+
+// SceAppMgr
+#define ScePspemu_sceAppMgrReleaseSoundOutExclusive3 0x6e8c
+#define ScePspemu_sceAppMgrExitToLiveboardForGameApp 0x6e9c
+#define ScePspemu_sceAppMgrAcquireBgmPort 0x6eac
+
+// SceCompat
+#define ScePspemu_sceCompatGetUpdateState 0x6ebc
+#define ScePspemu_sceCompatGetDevInf 0x6ecc
+#define ScePspemu_sceCompatGetPeripheralState 0x6edc
+#define ScePspemu_sceCompatWriteShared32 0x6eec
+#define ScePspemu_sceCompatWriteSharedCtrl 0x6efc
+#define ScePspemu_sceCompatSuspendResume 0x6f0c
+#define ScePspemu_sceCompatSetDisplayConfig 0x6f1c
+#define ScePspemu_sceCompatAvailableColorSpaceSetting 0x6f2c
+#define ScePspemu_sceCompatCache 0x6f3c
+#define ScePspemu_sceCompatWaitSpecialRequest 0x6f4c
+#define ScePspemu_sceCompatReadShared32 0x6f5c
+#define ScePspemu_sceCompatIsPocketStationTitle 0x6f6c
+#define ScePspemu_sceCompatWaitAndGetRequest 0x6f7c
+#define ScePspemu_sceCompatSetUpdateState 0x6f8c
+#define ScePspemu_sceCompatStart 0x6f9c
+#define ScePspemu_sceCompatIdStorageLookup 0x6fac
+#define ScePspemu_sceCompatCheckPocketStation 0x6fbc
+#define ScePspemu_sceCompatGetTitleList 0x6fcc
+#define ScePspemu_sceCompatGetCurrentSecureTick 0x6fdc
+#define ScePspemu_sceCompatAllocCdramWithHole 0x6fec
+#define ScePspemu_sceCompatFrameBufferInit 0x6ffc
+#define ScePspemu_sceCompatLCDCSync 0x700c
+#define ScePspemu_sceCompatWaitIntr 0x701c
+#define ScePspemu_sceCompatDatRead 0x702c
+#define ScePspemu_sceCompatReturnValueEx 0x703c
+#define ScePspemu_sceCompatGetStatus 0x704c
+#define ScePspemu_sceCompatInterrupt 0x705c
+#define ScePspemu_sceCompatSetRif 0x706c
+#define ScePspemu_sceCompatGetPrimaryHead 0x707c
+#define ScePspemu_sceCompatSetSuspendSema 0x708c
+#define ScePspemu_sceCompatInitEx 0x709c
+#define ScePspemu_sceCompatUninit 0x70ac
+#define ScePspemu_sceCompatStop 0x70bc
+
+// SceNet
+#define ScePspemu_sceNetRecv 0x70cc
+#define ScePspemu_sceNetSetsockopt 0x70dc
+#define ScePspemu_sceNetGetMacAddress 0x70ec
+#define ScePspemu_sceNetConnect 0x70fc
+#define ScePspemu_sceNetBind 0x710c
+#define ScePspemu_sceNetAccept 0x711c
+#define ScePspemu_sceNetGetsockname 0x712c
+#define ScePspemu_sceNetGetpeername 0x713c
+#define ScePspemu_sceNetSocketClose 0x714c
+#define ScePspemu_sceNetEpollWait 0x715c
+#define ScePspemu_sceNetHtonl 0x716c
+#define ScePspemu_sceNetEpollControl 0x717c
+#define ScePspemu_sceNetSendto 0x718c
+#define ScePspemu_sceNetShutdown 0x719c
+#define ScePspemu_sceNetEpollDestroy 0x71ac
+#define ScePspemu_sceNetListen 0x71bc
+#define ScePspemu_sceNetEpollAbort 0x71cc
+#define ScePspemu_sceNetGetSockInfo 0x71dc
+#define ScePspemu_sceNetRecvfrom 0x71ec
+#define ScePspemu_sceNetGetsockopt 0x71fc
+#define ScePspemu_sceNetInetPton 0x720c
+#define ScePspemu_sceNetSend 0x721c
+#define ScePspemu_sceNetTerm 0x722c
+#define ScePspemu_sceNetInit 0x723c
+#define ScePspemu_sceNetSocket 0x724c
+#define ScePspemu_sceNetEpollCreate 0x725c
+
+// SceNetInternal
+#define ScePspemu_SceNetInternal_04E6136D 0x726c
+#define ScePspemu_SceNetInternal_104E4820 0x727c
+#define ScePspemu_SceNetInternal_235DE96C 0x728c
+#define ScePspemu_sceNetIoctlInternal 0x729c
+#define ScePspemu_SceNetInternal_5B0E370C 0x72ac
+#define ScePspemu_SceNetInternal_694F8996 0x72bc
+#define ScePspemu_sceNetControlInternal 0x72cc
+#define ScePspemu_SceNetInternal_BDA92B76 0x72dc
+#define ScePspemu_SceNetInternal_CF49E9C4 0x72ec
+#define ScePspemu_SceNetInternal_EAC33599 0x72fc
+#define ScePspemu_SceNetInternal_EDAA3453 0x730c
+#define ScePspemu_SceNetInternal_F3917021 0x731c
+
+// SceLibKernel
+#define ScePspemu_sceKernelWaitSema 0x732c
+#define ScePspemu_sceClibMemcmpConstTime 0x733c
+#define ScePspemu_sceKernelWaitSemaCB 0x734c
+#define ScePspemu_sceKernelCreateSema 0x735c
+#define ScePspemu_sceKernelPollEventFlag 0x736c
+#define ScePspemu_sceKernelDeleteLwMutex 0x737c
+#define ScePspemu_sceKernelAtomicGetAndSet8 0x738c
+#define ScePspemu_sceIoChstat 0x739c
+#define ScePspemu_sceKernelCancelEventFlag 0x73ac
+#define ScePspemu_sceKernelLoadStartModule 0x73bc
+#define ScePspemu_sceClibMemcpy_safe 0x73cc
+#define ScePspemu_sceKernelAtomicCompareAndSet8 0x73dc
+#define ScePspemu___stack_chk_fail 0x73ec
+#define ScePspemu___sce_aeabi_idiv0 0x73fc
+#define ScePspemu_sceKernelLockLwMutex 0x740c
+#define ScePspemu_sceIoPread 0x741c
+#define ScePspemu_sceClibMemset 0x742c
+#define ScePspemu_sceKernelCancelSema 0x743c
+#define ScePspemu_sceIoOpen 0x744c
+#define ScePspemu_sceClibMemmove 0x745c
+#define ScePspemu_sceKernelWaitEventFlag 0x746c
+#define ScePspemu_sceKernelCreateEventFlag 0x747c
+#define ScePspemu_sceKernelUnlockLwMutex 0x748c
+#define ScePspemu_sceIoMkdir 0x749c
+#define ScePspemu_sceIoLseek 0x74ac
+#define ScePspemu_sceIoDread 0x74bc
+#define ScePspemu_sceKernelAtomicDecIfPositive8 0x74cc
+#define ScePspemu_sceIoDopen 0x74dc
+#define ScePspemu_sceKernelGetProcessTimeWide 0x74ec
+#define ScePspemu_sceClibStrncasecmp 0x74fc
+#define ScePspemu_sceIoGetstat 0x750c
+#define ScePspemu_sceClibStrncpy 0x751c
+#define ScePspemu_sceKernelCreateThread 0x752c
+#define ScePspemu_sceKernelCreateLwMutex 0x753c
+#define ScePspemu_sceKernelWaitThreadEnd 0x754c
+#define ScePspemu_sceIoRemove 0x755c
+#define ScePspemu_sceKernelAtomicSet8 0x756c
+#define ScePspemu_sceIoRmdir 0x757c
+#define ScePspemu_sceKernelGetProcessTimeLow 0x758c
+#define ScePspemu_sceKernelStartThread 0x759c
+#define ScePspemu_sceIoRename 0x75ac
+#define ScePspemu_sceClibPrintf 0x75bc
+#define ScePspemu___sce_aeabi_ldiv0 0x75cc
+
+// SceIofilemgr
+#define ScePspemu_sceIoWrite 0x75dc
+#define ScePspemu_sceIoDclose 0x75ec
+#define ScePspemu_sceIoClose 0x75fc
+#define ScePspemu_sceIoRead 0x760c
+
+// SceModulemgr
+#define ScePspemu_sceKernelInhibitLoadingModule 0x761c
+
+// SceProcessmgr
+#define ScePspemu_sceKernelPowerTick 0x762c
+#define ScePspemu_sceKernelPowerUnlock 0x763c
+#define ScePspemu_sceKernelPowerLock 0x764c
+
+// SceSysmem
+#define ScePspemu_sceKernelFreeMemBlock 0x765c
+#define ScePspemu_sceKernelGetMemBlockBase 0x766c
+#define ScePspemu_sceKernelAllocMemBlock 0x767c
+
+// SceThreadmgr
+#define ScePspemu_sceKernelDeleteThread 0x768c
+#define ScePspemu_sceKernelExitDeleteThread 0x769c
+#define ScePspemu_sceKernelDelayThread 0x76ac
+#define ScePspemu_sceKernelClearEventFlag 0x76bc
+#define ScePspemu_sceKernelGetProcessId 0x76cc
+#define ScePspemu_sceKernelCreateCallback 0x76dc
+#define ScePspemu_sceKernelDeleteCallback 0x76ec
+#define ScePspemu_sceKernelDeleteSema 0x76fc
+#define ScePspemu_sceKernelSignalSema 0x770c
+#define ScePspemu_sceKernelSetEventFlag 0x771c
+
+// SceWlan
+#define ScePspemu_sceWlanGetConfiguration 0x772c
+
+// SceRegMgrService
+#define ScePspemu_sceRegMgrSrvGetRegion 0x773c
+
+// SceRegMgr
+#define ScePspemu_sceRegMgrGetKeyInt 0x774c
+#define ScePspemu_sceRegMgrSetKeys 0x775c
+#define ScePspemu_sceRegMgrGetKeys 0x776c
+#define ScePspemu_sceRegMgrSetKeyInt 0x777c
+#define ScePspemu_sceRegMgrGetKeyStr 0x778c
+
+// SceAppUtil
+#define ScePspemu_sceAppUtilSystemParamGetString 0x779c
+#define ScePspemu_sceAppUtilPhotoUmount 0x77ac
+#define ScePspemu_sceAppUtilMusicMount 0x77bc
+#define ScePspemu_sceAppUtilInit 0x77cc
+#define ScePspemu_sceAppUtilPhotoMount 0x77dc
+
+// SceCommonDialog
+#define ScePspemu_scePhotoImportDialogGetStatus 0x77ec
+#define ScePspemu_sceImeDialogInit 0x77fc
+#define ScePspemu_sceNetCheckDialogAbort 0x780c
+#define ScePspemu_sceImeDialogGetResult 0x781c
+#define ScePspemu_SceCommonDialog_396D7B68 0x782c
+#define ScePspemu_scePhotoImportDialogAbort 0x783c
+#define ScePspemu_SceCommonDialog_500229F0 0x784c
+#define ScePspemu_sceImeDialogAbort 0x785c
+#define ScePspemu_SceCommonDialog_631DC45C 0x786c
+#define ScePspemu_SceCommonDialog_63B08CA3 0x787c
+#define ScePspemu_SceCommonDialog_64F65B8D 0x788c
+#define ScePspemu_SceCommonDialog_675248CA 0x789c
+#define ScePspemu_SceCommonDialog_7030E4A6 0x78ac
+#define ScePspemu_scePhotoImportDialogInit 0x78bc
+#define ScePspemu_scePhotoImportDialogTerm 0x78cc
+#define ScePspemu_sceNetCheckDialogGetStatus 0x78dc
+#define ScePspemu_sceImeDialogTerm 0x78ec
+#define ScePspemu_sceNetCheckDialogTerm 0x78fc
+#define ScePspemu_sceCommonDialogUpdate 0x790c
+#define ScePspemu_SceCommonDialog_9FA21E09 0x791c
+#define ScePspemu_sceNetCheckDialogInit 0x792c
+#define ScePspemu_SceCommonDialog_A68A44EA 0x793c
+#define ScePspemu_sceNetCheckDialogGetResult 0x794c
+#define ScePspemu_SceCommonDialog_C2D6F7F2 0x795c
+#define ScePspemu_sceImeDialogGetStatus 0x796c
+#define ScePspemu_scePhotoImportDialogGetResult 0x797c
+#define ScePspemu_SceCommonDialog_ED2F1495 0x798c
+#define ScePspemu_SceCommonDialog_FA26EB30 0x799c
+
+// SceNetCtl
+#define ScePspemu_SceNetCtl_229EAA64 0x79ac
+#define ScePspemu_SceNetCtl_2792E1B6 0x79bc
+#define ScePspemu_SceNetCtl_2CF683AD 0x79cc
+#define ScePspemu_SceNetCtl_3AB4D791 0x79dc
+#define ScePspemu_sceNetCtlInit 0x79ec
+#define ScePspemu_SceNetCtl_713394C0 0x79fc
+#define ScePspemu_sceNetCtlAdhocGetPeerList 0x7a0c
+#define ScePspemu_SceNetCtl_8F09A038 0x7a1c
+#define ScePspemu_SceNetCtl_9629B72F 0x7a2c
+#define ScePspemu_SceNetCtl_AB1462C5 0x7a3c
+#define ScePspemu_SceNetCtl_AC326DB7 0x7a4c
+#define ScePspemu_sceNetCtlInetGetInfo 0x7a5c
+#define ScePspemu_SceNetCtl_DD96DA85 0x7a6c
+#define ScePspemu_sceNetCtlCheckCallback 0x7a7c
+#define ScePspemu_SceNetCtl_E8E8DF18 0x7a8c
+
+// SceLibLocation
+#define ScePspemu_sceLocationClose 0x7a9c
+#define ScePspemu_sceLocationGetLocation 0x7aac
+#define ScePspemu_sceLocationGetPermission 0x7abc
+#define ScePspemu_sceLocationConfirmGetStatus 0x7acc
+#define ScePspemu_sceLocationConfirm 0x7adc
+#define ScePspemu_sceLocationOpen 0x7aec
+#define ScePspemu_sceLocationConfirmAbort 0x7afc
+#define ScePspemu_sceLocationConfirmGetResult 0x7b0c
+
+// SceLibLocationInternal
+#define ScePspemu_SceLibLocationInternal_3500A98C 0x7b1c
+
+// ScePhotoExport
+#define ScePspemu_ScePhotoExport_76640642 0x7b2c
+
+// SceVideoExport
+#define ScePspemu_sceVideoExportFromFile 0x7b3c
+
+// SceMusicExport
+#define ScePspemu_SceMusicExport_D1011570 0x7b4c
+
+// SceShellUtil
+#define ScePspemu_sceShellUtilUnlock 0x7b5c
+#define ScePspemu_sceShellUtilRegisterEventHandler 0x7b6c
+#define ScePspemu_sceShellUtilLock 0x7b7c
+#define ScePspemu_SceShellUtil_CE35B2B8 0x7b8c
+#define ScePspemu_sceShellUtilInitEvents 0x7b9c
+#define ScePspemu_SceShellUtil_EC5881A5 0x7bac
+
+// SceScreenShot
+#define ScePspemu_sceScreenShotDisable 0x7bbc
+#define ScePspemu_sceScreenShotEnable 0x7bcc
+
+// SceHttp
+#define ScePspemu_sceHttpInit 0x7bdc
+#define ScePspemu_sceHttpSetConnectTimeOut 0x7bec
+#define ScePspemu_sceHttpGetStatusCode 0x7bfc
+#define ScePspemu_sceHttpDeleteRequest 0x7c0c
+#define ScePspemu_sceHttpSetRedirectCallback 0x7c1c
+#define ScePspemu_sceHttpCreateTemplate 0x7c2c
+#define ScePspemu_sceHttpReadData 0x7c3c
+#define ScePspemu_sceHttpSetResolveTimeOut 0x7c4c
+#define ScePspemu_sceHttpSetSendTimeOut 0x7c5c
+#define ScePspemu_sceHttpSetRecvTimeOut 0x7c6c
+#define ScePspemu_sceHttpSetResolveRetry 0x7c7c
+#define ScePspemu_sceHttpSendRequest 0x7c8c
+#define ScePspemu_sceHttpCreateRequestWithURL 0x7c9c
+#define ScePspemu_sceHttpCreateConnectionWithURL 0x7cac
+#define ScePspemu_sceHttpTerm 0x7cbc
+#define ScePspemu_sceHttpDeleteTemplate 0x7ccc
+#define ScePspemu_sceHttpDeleteConnection 0x7cdc
+#define ScePspemu_sceHttpGetResponseContentLength 0x7cec
+
+// SceSblSsUpdateMgr
+#define ScePspemu_SceSblSsUpdateMgr_157AD4AD 0x7cfc
+#define ScePspemu_sceSblUsPowerControl 0x7d0c
+#define ScePspemu_sceSblUsInspectSpackage 0x7d1c
+#define ScePspemu_SceSblSsUpdateMgr_2A02DCFB 0x7d2c
+#define ScePspemu_sceSblUsGetApplicableVersion 0x7d3c
+#define ScePspemu_SceSblSsUpdateMgr_4897AD56 0x7d4c
+#define ScePspemu_sceSblUsAllocateBuffer 0x7d5c
+#define ScePspemu_sceSblUsUpdateSpackage 0x7d6c
+#define ScePspemu_sceSblUsVerifyPup 0x7d7c
+#define ScePspemu_sceSblUsGetSpkgInfo 0x7d8c
+#define ScePspemu_sceSblUsGetUpdateMode 0x7d9c
+#define ScePspemu_SceSblSsUpdateMgr_92A8002B 0x7dac
+#define ScePspemu_sceSblUsVerifyPupSegmentById 0x7dbc
+#define ScePspemu_sceSblUsVerifyPupHeader 0x7dcc
+#define ScePspemu_SceSblSsUpdateMgr_9FC8E905 0x7ddc
+#define ScePspemu_sceSblUsVerifyPupAdditionalSign 0x7dec
+#define ScePspemu_sceSblUsReleaseBuffer 0x7dfc
+#define ScePspemu_sceSblUsCheckSystemIntegrity 0x7e0c
+#define ScePspemu_sceSblUsExtractSpackage 0x7e1c
+#define ScePspemu_sceSblSsUpdateMgrVerifyPupWatermark 0x7e2c
+#define ScePspemu_sceSblUsSetUpdateMode 0x7e3c
+#define ScePspemu_SceSblSsUpdateMgr_D0CB50AC 0x7e4c
+#define ScePspemu_sceSblUsVerifyPupSegment 0x7e5c
+#define ScePspemu_sceSblUsGetStatus 0x7e6c
+#define ScePspemu_SceSblSsUpdateMgr_FE930747 0x7e7c
+
+// SceVshBridge
+#define ScePspemu_vshSblQafMgrIsAllowPSPEmuSelectNPEnv 0x7e8c
+#define ScePspemu_vshSblUtMgrHasStoreFlag 0x7e9c
+#define ScePspemu_vshKernelCheckModelCapability 0x7eac
+#define ScePspemu_vshSblAimgrIsDEX 0x7ebc
+#define ScePspemu_vshSblAimgrIsVITA 0x7ecc
+#define ScePspemu_vshSblQafMgrIsAllowPSPEmuScreenShot 0x7edc
+
+// SceUsbPspcm
+#define ScePspemu_sceUsbPspcmIoctlReset 0x7eec
+#define ScePspemu_sceUsbPspcmOpen 0x7efc
+#define ScePspemu_sceUsbPspcmIoctlCancelWaitData 0x7f0c
+#define ScePspemu_sceUsbPspcmStopDevice 0x7f1c
+#define ScePspemu_sceUsbPspcmIoctlWaitData 0x7f2c
+#define ScePspemu_sceUsbPspcmSetTitle 0x7f3c
+#define ScePspemu_sceUsbPspcmWrite 0x7f4c
+#define ScePspemu_sceUsbPspcmRead 0x7f5c
+#define ScePspemu_sceUsbPspcmClose 0x7f6c
+#define ScePspemu_sceUsbPspcmDevctl 0x7f7c
+#define ScePspemu_sceUsbPspcmIoctlPollData 0x7f8c
+#define ScePspemu_sceUsbPspcmStartDevice 0x7f9c
+
+// SceNetAdhocMatching
+#define ScePspemu_sceNetAdhocMatchingCancelTarget 0x7fac
+#define ScePspemu_sceNetAdhocMatchingStop 0x7fbc
+#define ScePspemu_sceNetAdhocMatchingCreate 0x7fcc
+#define ScePspemu_sceNetAdhocMatchingSendData 0x7fdc
+#define ScePspemu_sceNetAdhocMatchingInit 0x7fec
+#define ScePspemu_sceNetAdhocMatchingSelectTarget 0x7ffc
+#define ScePspemu_sceNetAdhocMatchingStart 0x800c
+
+// SceLibc
+#define ScePspemu_strtol 0x801c
+#define ScePspemu_swprintf 0x802c
+#define ScePspemu_abort 0x803c
+#define ScePspemu___cxa_atexit 0x804c
+#define ScePspemu_srand 0x805c
+#define ScePspemu__sceLdTlsRegisterModuleInfo 0x806c
+#define ScePspemu_fflush 0x807c
+#define ScePspemu_free 0x808c
+#define ScePspemu_wcsncpy 0x809c
+#define ScePspemu_memset 0x80ac
+#define ScePspemu_memcpy 0x80bc
+#define ScePspemu_memcmp 0x80cc
+#define ScePspemu_malloc 0x80dc
+#define ScePspemu_exit 0x80ec
+#define ScePspemu_strlen 0x80fc
+#define ScePspemu_strncpy 0x810c
+#define ScePspemu_snprintf 0x811c
+#define ScePspemu_memalign 0x812c
+#define ScePspemu_memmove 0x813c
+#define ScePspemu___at_quick_exit 0x814c
+#define ScePspemu___cxa_set_dso_handle_main 0x815c
+#define ScePspemu_rand 0x816c
+#define ScePspemu_strrchr 0x817c
+#define ScePspemu_strncmp 0x818c
+
+#endif
