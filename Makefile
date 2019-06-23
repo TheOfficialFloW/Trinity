@@ -22,6 +22,7 @@ clean:
 	-rm -rf taiHEN/build
 	-rm -rf plugin/build
 	-rm -rf bootstrap/build
+	-rm bootstrap/res/taihen.skprx
 	-rm bootstrap/res/henkaku.skprx
 	-rm bootstrap/res/henkaku.suprx
 	-rm payload/bootstrap.h
