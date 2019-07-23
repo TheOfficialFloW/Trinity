@@ -228,5 +228,5 @@ int main(int argc, char **argv)
 	memcpy(out_buffer, pspHeader, 0x960);
 	memcpy(out_buffer+0x960, kirk_enc+0x920, krawSize-0x920);
 
-	return dumpFile("./data.psp", out_buffer, (krawSize-0x920)+0x960);
+	return dumpFile("./DATA.PSP", out_buffer, (krawSize-0x920)+0x960);
 }
